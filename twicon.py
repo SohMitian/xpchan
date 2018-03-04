@@ -29,7 +29,7 @@ class twicon:  # Twitter上の操作クラス
         serch = self.twitter.get(self.url[0], params=params)
         if serch.status_code == 200:
             # 検索データをディクショナリで返す
-            print('ok') # デバッグ用
+            #print('ok') # デバッグ用
             return json.loads(serch.text)
             
         else:
@@ -42,12 +42,12 @@ class twicon:  # Twitter上の操作クラス
             for tweet in search_tweet['statuses']:
                 # NGワード(check:ワードの増加を想定し、別ファイルを用意)
                 if not '@tip_XPchan' in tweet['text'] or 'bot' in tweet['user']['screen_name']:
-                    print('ok') # デバッグ用
+                    #print('ok') # デバッグ用
                     #if tweet['retweet_count'] > 2 and tweet['favorite_count'] > 2:
                     url = self.url[3].replace(':id', str(tweet['id']))
                     self.twitter.post(url)
         else:
-            print(404)
+            return 404
 
     # tweet
     def tweet(self, text):
